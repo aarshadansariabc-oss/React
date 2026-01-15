@@ -1,117 +1,256 @@
-*{
+/* ========================================
+   PREMIUM GLASSMORPHISM CARD STYLES
+   Smooth - Classic - Responsive
+   ========================================
+*/
+
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-hover-bg: rgba(255, 255, 255, 0.1);
+  --text-main: #ffffff;
+  --text-dim: rgba(255, 255, 255, 0.6);
+  --accent-color: #ffffff;
+  --transition-smooth: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-  
-}
-html,
-body{
-  height: 100%;
-  width: 100%;
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
 }
 
-body{
-  height: 100%;
-  width: 100%;
-}
-
-.parent{
+body {
   min-height: 100vh;
   width: 100%;
-  background-color: black;
-  padding: 30px;
+  /* Dark Classic Gradient */
+  background: radial-gradient(circle at top left, #1e293b, #0f172a, #020617);
   display: flex;
-  align-items: center;
-  gap: 30px;
-  flex-wrap: wrap;
+  justify-content: center;
+  overflow-x: hidden;
 }
 
-.card{
-  height: 330px;
-  width: 258px;
-  background-color: #fff;
-  border-radius: 15px;
+.parent {
+  min-height: 100vh;
+  width: 100%;
+  padding: 50px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap; /* Cards wrap automatically */
+}
+
+/* ===== CARD CORE ===== */
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 290px; /* Classic card width */
+  min-height: 350px;
   padding: 30px;
+  border-radius: 28px; /* Smooth rounded corners */
+  
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  
+  border: 1px solid var(--glass-border);
+  /* Inner glow for depth */
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: var(--transition-smooth);
+  cursor: pointer;
+  overflow: hidden;
 }
 
-.card .top{
-  display: flex;
-  align-items: center;
-  justify-content:space-between;
-  margin-bottom: 30px;
+/* Shine Animation on Hover */
+.card::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 100%;
+  height: 200%;
+  background: linear-gradient(
+    transparent, 
+    rgba(255, 255, 255, 0.05), 
+    transparent
+  );
+  transform: rotate(45deg);
+  transition: 0.8s;
 }
 
-.top img{
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  border: 1px solid #dadada;
-  padding: 2px;
+.card:hover::after {
+  left: 120%;
 }
 
-.top button{
-  display: flex;
-  align-items: center;
-  border: 1px solid #dadada;
-  padding: 3px 6px;
-  border-radius: 5px;
-  font-size: 10px;
-  gap: 3px;
-  background-color: transparent;
-  color: #b1b1b1;
+.card:hover {
+  transform: translateY(-12px) scale(1.02);
+  background: var(--glass-hover-bg);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
 }
 
-.center h3{
-  font-size: 17px;
-  font-weight: 500;
-}
-
-.center h3 span{
-  font-size: 10px;
-  font-weight: 400;
-  color: #8b8b8b;
-}
-
-.center h2{
-  font-size: 20px;
-}
-.tag{
-  display: flex;
-  margin-top: 10px;
-  gap: 5px;
-
-}
-.tag h4{
-  font-size: 10px;
-  background-color: #dadada;
-  color: #111;
-  font-weight: 500;
-  padding: 4px 8px;
-  border-radius: 3px;
-}
-.bottom{
+/* ===== TOP SECTION ===== */
+.card .top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1.5px solid #d9d9d9;
-  padding-top: 15px;
-}
-.bottom button{
-  background-color: #111;
-  color: white;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
+  margin-bottom: 20px;
 }
 
-.bottom h3{
-  font-size: 17px;
+.top img {
+  height: 48px;
+  width: 48px;
+  border-radius: 14px; /* Classic Squircle shape */
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  padding: 2px;
+  object-fit: cover;
 }
-.bottom p{
-  font-size: 10px;
-  color: #8b8b8b;
+
+.top button {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: 0.3s;
+}
+
+.top button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ===== CENTER SECTION ===== */
+.center h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-main);
+  letter-spacing: -0.2px;
+}
+
+.center h3 span {
+  display: block;
+  font-size: 12px;
+  color: var(--text-dim);
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+.center h2 {
+  font-size: 24px;
+  color: var(--text-main);
+  margin-top: 12px;
+  font-weight: 700;
+}
+
+.tag {
+  display: flex;
+  margin-top: 15px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag h4 {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+}
+
+/* ===== BOTTOM SECTION ===== */
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bottom button {
+  background: var(--accent-color);
+  color: #0f172a;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bottom button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+.bottom .price-info {
+  text-align: right;
+}
+
+.bottom h3 {
+  font-size: 19px;
+  color: var(--text-main);
+}
+
+.bottom p {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+/* ===== RESPONSIVENESS (Media Queries) ===== */
+
+/* For Tablets */
+@media (max-width: 768px) {
+  .parent {
+    padding: 30px 15px;
+    gap: 20px;
+  }
+  .card {
+    max-width: 45%; /* Two cards in a row */
+  }
+}
+
+/* For Mobile Phones */
+@media (max-width: 500px) {
+  .card {
+    max-width: 100%; /* Full width cards */
+    min-height: auto;
+    padding: 25px;
+  }
+  
+  .bottom {
+    flex-direction: row; /* Keeping items side by side but adjusting sizes */
+  }
+
+  .center h2 {
+    font-size: 20px;
+  }
+}
+
+/* Ultra-small screens */
+@media (max-width: 350px) {
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  .bottom .price-info {
+    text-align: left;
+  }
 }
