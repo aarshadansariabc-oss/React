@@ -11,19 +11,14 @@ const App = () => {
     const newtask = [...task];
     newtask.push({ title, detailed });
     settask(newtask);
-
     settitle("");
     setdetailed("");
   };
 
   const DeleteNode = (idx) => {
-    // Create a copy of the task array
-    const copyTask = [...task]; // or task.slice()
-
-    // Remove 1 element at the given index
+   
+    const copyTask = [...task];
     copyTask.splice(idx, 1);
-
-    // Update the state
     settask(copyTask);
   };
 
